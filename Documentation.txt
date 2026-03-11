@@ -1,0 +1,177 @@
+# OmniAgent AI Assistant - Full Documentation
+# source .venv/Scripts/activate                   -for git bash
+## Overview
+OmniAgent is an AI-powered personal assistant program written in Python. It features a graphical user interface (GUI) for interaction, supports both voice and text input, and integrates various backend functionalities including speech recognition, chatbot responses, real-time web search, automation tasks, text-to-speech, image generation, and 3D CAD model generation. The program runs in a multi-threaded environment to handle concurrent tasks efficiently.
+
+The main entry point is `Main.py`, which initializes the system, loads environment variables, and starts two threads: one for processing user queries and another for managing the GUI.
+
+## Architecture
+
+### High-Level Architecture
+- **Frontend**: Handles the graphical user interface and user interactions.
+- **Backend**: Contains core logic for decision-making, search, automation, speech processing, chatbot, and generation tasks.
+- **Main Execution Loop**: Processes user inputs, makes decisions, and triggers appropriate backend functions.
+- **Threading Model**: Uses two main threads for query processing and GUI updates to ensure responsiveness.
+
+### Key Components
+1. **Main.py** (Entry Point):
+   - Loads environment variables from `.env`.
+   - Initializes the system with default chat logs.
+   - Runs two threads: `FirstThread` for query processing and `SecondThread` for GUI.
+
+2. **Frontend.GUI_2**:
+   - `GraphicalUserInterface`: The main GUI class.
+   - Functions for setting assistant status, showing text, managing microphone/text input modes, etc.
+
+3. **Backend Modules**:
+   - `Model.FirstLayerDMM`: Decision-making model that categorizes user queries (e.g., general, realtime, automation, generation).
+   - `RealTimeSearchEngine`: Performs web searches for real-time information.
+   - `Automation`: Handles system automation tasks like opening/closing apps, searches, etc.
+   - `SpeechToText.SpeechRecognition`: Converts speech to text.
+   - `ChatBot`: Generates responses for general queries.
+   - `TextToSpeech`: Converts text responses to speech.
+   - `cad_generator.generate_cad`: Generates 3D CAD models and launches Fusion software.
+   - `ImageGeneration.py`: Script for generating images (launched via subprocess).
+
+### Data Flow
+1. User input (voice or text) is captured via GUI or speech recognition.
+2. Input is processed by `FirstLayerDMM` to decide actions (e.g., search, generate, automate).
+3. Based on decisions, appropriate backend functions are triggered (e.g., search engine, chatbot, image/CAD generation).
+4. Responses are displayed on GUI and spoken via TTS.
+5. Chat logs are maintained in JSON format for persistence.
+
+### Threading and Concurrency
+- **FirstThread**: Continuously checks for microphone status and processes queries when active.
+- **SecondThread**: Runs the GUI event loop.
+- Additional threads: Used for CAD generation to avoid blocking the main loop.
+- Subprocesses: Launched for image generation to run independently.
+
+## Requirements
+
+### System Requirements
+- **Operating System**: Compatible with Windows, macOS, or Linux (based on subprocess usage).
+- **Python Version**: Python 3.10 (as specified).
+- **Virtual Environment**: Use a Python virtual environment (.venv) to isolate dependencies.
+
+### Dependencies
+The program requires the following Python packages (install via pip):
+- `python-dotenv`: For loading environment variables from `.env`.
+- `asyncio`: For asynchronous operations (built-in in Python 3.10).
+- Additional dependencies may be required for backend modules (e.g., speech recognition libraries like `speechrecognition`, TTS like `pyttsx3`, web scraping for search, etc.). Since the code imports from custom modules, ensure all Backend and Frontend files are present.
+
+Note: The exact dependencies for custom modules (e.g., GUI_2, Model, etc.) are not listed here as they are not standard packages. Refer to the module files for their requirements.
+
+### Environment Variables
+Create a `.env` file in the project root with:
+- `Username`: Your name (e.g., "John").
+- `Assistantname`: Assistant's name (e.g., "OmniAgent").
+
+Example `.env`:
+```
+Username=John
+Assistantname=OmniAgent
+```
+
+### Hardware Requirements
+- Microphone: For voice input.
+- Speakers/Headphones: For text-to-speech output.
+- Internet Connection: Required for real-time search and potentially image/CAD generation.
+- Sufficient RAM/CPU: For running multiple threads and subprocesses.
+
+## Setup Instructions
+
+1. **Clone or Download the Project**:
+   - Ensure all files (Main.py, Frontend/, Backend/) are in the project directory.
+
+2. **Install Python 3.10**:
+   - Download and install Python 3.10 from the official website if not already installed.
+
+3. **Create Virtual Environment**:
+   - Open a terminal in the project directory.
+   - Run: `python -m venv .venv`
+   - Activate: On Windows: `.venv\Scripts\activate` | On macOS/Linux: `source .venv/bin/activate`
+
+4. **Install Dependencies**:
+   - Run: `pip install python-dotenv`
+   - Install any additional dependencies required by Backend/Frontend modules (check their imports).
+
+5. **Configure Environment**:
+   - Create `.env` file as described above.
+
+6. **Run the Program**:
+   - Ensure virtual environment is activated.
+   - Run: `python Main.py`
+   - The GUI should launch, and the assistant will be ready for input.
+
+## Usage
+
+### Starting the Assistant
+- Run `python Main.py` with the virtual environment activated.
+- The GUI window will open, showing the assistant's status.
+
+### Input Modes
+- **Voice Mode**: Enable microphone via GUI. Speak queries; they will be transcribed and processed.
+- **Text Mode**: Type queries in the GUI input field.
+
+### Supported Queries
+- General conversation: Chat with the AI.
+- Real-time search: Queries prefixed or categorized as "realtime" trigger web searches.
+- Automation: Commands like "open", "close", "google search", "youtube search", etc.
+- Image Generation: Queries starting with "generate" launch image creation.
+- CAD Generation: Queries starting with "3d cad" generate 3D models.
+- Exit: Say or type "exit" to quit the program.
+
+### Example Interactions
+- User: "Hello OmniAgent"
+  - Assistant: Responds via chat and speech.
+- User: "Search for Python tutorials"
+  - Assistant: Performs real-time search and provides results.
+- User: "Generate an image of a cat"
+  - Assistant: Launches image generation script.
+
+### Chat Logs
+- Conversations are saved in `Data/ChatLog.json`.
+- Default chat is shown if no logs exist.
+
+## Modules Description
+
+### Frontend.GUI_2
+- Manages the user interface.
+- Functions: SetAssistantStatus, ShowTextToScreen, GetInputMode, etc.
+
+### Backend.Model
+- FirstLayerDMM: Analyzes queries and returns decision categories.
+
+### Backend.RealTimeSearchEngine
+- Searches the web for current information.
+
+### Backend.Automation
+- Executes system tasks like app control.
+
+### Backend.SpeechToText
+- Recognizes speech input.
+
+### Backend.ChatBot
+- Generates conversational responses.
+
+### Backend.TextToSpeech
+- Speaks responses aloud.
+
+### Backend.cad_generator
+- Generates 3D CAD models using Fusion.
+
+### Backend.ImageGeneration.py
+- Script for AI image generation (run via subprocess).
+
+## Troubleshooting
+- **Import Errors**: Ensure all Backend/Frontend files are present and dependencies are installed.
+- **Microphone Issues**: Check permissions and hardware.
+- **Subprocess Failures**: Verify paths to scripts (e.g., ImageGeneration.py).
+- **Virtual Env Issues**: Always activate .venv before running.
+
+## Future Enhancements
+- Add more automation functions.
+- Integrate with cloud services for better search/image gen.
+- Improve error handling and logging.
+
+This documentation covers the full program based on the provided Main.py code. For module-specific details, refer to their respective files.

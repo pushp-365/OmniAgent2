@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Image → Text (OCR)</title>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:1rem;}
+    #preview{max-width:100%;max-height:60vh;border:1px solid #ccc;margin-top:1rem;}
+    #output{white-space:pre-wrap;margin-top:1rem;border:1px solid #888;padding:.5rem;}
+    #progress{margin-top:.5rem;color:#0a7;}
+  </style>
+</head>
+<body>
+  <h2>Image → Text (OCR)</h2>
+  <input type="file" id="fileInput" accept="image/*"><br>
+  <img id="preview"/>
+  <div id="progress"></div>
+  <pre id="output"></pre>
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+    const output = document.getElementById('output');
+    const progress = document.getElementById('progress');
+
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        preview.src = e.target.result;
+        const { createWorker } = Tesseract;
+        const worker = await createWorker({ logger: m => progress.textContent = Math.round(m.progress * 100) + '%' });
+        await worker.loadLanguage('eng');
+        await worker.initialize('eng');
+        const { data: { text } } = await worker.recognize(e.target.result);
+        output.textContent = text;
+        await worker.terminate();
+        progress.textContent = '';
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>

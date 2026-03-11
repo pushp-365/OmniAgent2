@@ -1,0 +1,19 @@
+# env
+.env
+
+# virtual env
+.venv/
+
+# python cache
+__pycache__/
+*.pyc
+
+# local models
+SLM/
+
+# data files
+*.mp3
+*.data
+
+# logs
+*.log
