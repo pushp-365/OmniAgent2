@@ -17,6 +17,7 @@ webdriver-manager
 torch
 torchvision
 transformers
+sentence-transformers
 ddgs
 flask
 flask-socketio

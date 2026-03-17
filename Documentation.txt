@@ -1,5 +1,4 @@
 # OmniAgent AI Assistant - Full Documentation
-# source .venv/Scripts/activate                   -for git bash
 ## Overview
 OmniAgent is an AI-powered personal assistant program written in Python. It features a graphical user interface (GUI) for interaction, supports both voice and text input, and integrates various backend functionalities including speech recognition, chatbot responses, real-time web search, automation tasks, text-to-speech, image generation, and 3D CAD model generation. The program runs in a multi-threaded environment to handle concurrent tasks efficiently.
 
