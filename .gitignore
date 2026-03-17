@@ -10,7 +10,7 @@ __pycache__/
 
 # local models
 SLM/
-intent_model
+intent_model/
 
 # data files
 *.mp3
