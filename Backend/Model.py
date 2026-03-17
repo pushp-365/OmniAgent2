@@ -1,7 +1,8 @@
+# this is online version for intent detection
+
 import cohere
 from rich import print
 from dotenv import dotenv_values
-
 evn_vars = dotenv_values(".env")
 
 CohereAPIkey = evn_vars.get("CohereAPIKey")
@@ -110,3 +111,13 @@ def FirstLayerDMM(prompt: str = "test", last_queries: list = [], depth: int = 0)
 if __name__ == "__main__":
     while True:
         print(FirstLayerDMM(input(">>>>")))
+# if __name__ =="__main__":
+#     while True:
+#         user_input = input("You: ")
+
+#         if user_input.lower() in ["exit", "quit"]:
+#             print("Goodbye")
+#             break
+
+#         response = askOmni(user_input, preamble)
+#         print("Omni:", response)

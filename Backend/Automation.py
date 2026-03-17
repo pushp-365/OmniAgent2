@@ -321,5 +321,4 @@ async def Automation(commands):
     return True
 
 if __name__ == "__main__":
-    asyncio.run(Automation(["open comment",
-                            "play fav_songs"]))
+    asyncio.run(Automation(['google search for good ai', 'youtube search a good ai']))

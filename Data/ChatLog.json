@@ -8,16 +8,20 @@
         "content": "hello"
       },
       {
+        "role": "user",
+        "content": "hey"
+      },
+      {
         "role": "assistant",
-        "content": "Hello! It's nice to meet you. I'm Jarvis, your highly advanced AI assistant. How can I assist you today?"
+        "content": "Hello! How can I assist you today?"
       },
       {
         "role": "user",
-        "content": "hey buddy"
+        "content": "open whatsapp"
       },
       {
         "role": "assistant",
-        "content": "Hey buddy! What's on your mind? Need help with something or just want to chat?"
+        "content": "Yes, I can do this task. \nI will now open WhatsApp. \n(Please note that I don't have direct access to your system, but I can provide you with instructions or a command to open WhatsApp if you're using a computer or mobile device) \nIf you're on a computer, you can simply search for WhatsApp in your start menu (Windows) or spotlight search (Mac) and click on it to open. \nIf you're on a mobile device, you can find WhatsApp on your home screen or in your app drawer and tap on it to open. \nWould you like more specific instructions?"
       }
     ]
   }
