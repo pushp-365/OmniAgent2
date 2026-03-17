@@ -13,7 +13,7 @@ from Frontend.GUI_2 import (  # type: ignore
     SetTextQuery,
 )
 
-from Backend.Model import FirstLayerDMM
+from Backend.new_model import FirstLayerDMM
 from Backend.RealTimeSearchEngine import RealtimeSearchEngine
 from Backend.Automation import Automation
 from Backend.SpeechToText import SpeechRecognition
