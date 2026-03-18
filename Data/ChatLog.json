@@ -1,12 +1,13 @@
 [
   {
-    "id": 1,
-    "name": "Chat 1",
+    "id": 3,
+    "name": "Chat 3",
+    "messages": []
+  },
+  {
+    "id": 2,
+    "name": "Chat 2",
     "messages": [
-      {
-        "role": "user",
-        "content": "hello"
-      },
       {
         "role": "user",
         "content": "hey"
@@ -17,11 +18,11 @@
       },
       {
         "role": "user",
-        "content": "open whatsapp"
+        "content": "what  can you do"
       },
       {
         "role": "assistant",
-        "content": "Yes, I can do this task. \nI will now open WhatsApp. \n(Please note that I don't have direct access to your system, but I can provide you with instructions or a command to open WhatsApp if you're using a computer or mobile device) \nIf you're on a computer, you can simply search for WhatsApp in your start menu (Windows) or spotlight search (Mac) and click on it to open. \nIf you're on a mobile device, you can find WhatsApp on your home screen or in your app drawer and tap on it to open. \nWould you like more specific instructions?"
+        "content": "I am a highly advanced AI model, I can help with a wide range of tasks. My capabilities include:\n1. **Speech Recognition (Speech to Text)**: I can recognize and transcribe spoken language into text.\n2. **Text to Speech Synthesis**: I can generate speech audio files from text and play them.\n3. **Conversational AI Chatbot**: I can engage in natural-sounding conversations, provide information, and answer questions.\n4. **Real-Time Search Engine**: I can perform Google searches and provide up-to-date information on various topics.\n5. **Task Automation**: I can automate tasks such as opening and closing applications, playing YouTube videos, generating content, and controlling system settings.\n6. **AI-Based Image Generation**: I can generate high-resolution images using Pollinations API.\n7. **Image to Text (OCR)**: I can extract text from images using OCR.space API.\n8. **Query Classification and Decision Making**: I can classify user queries and route them to appropriate AI modules or actions.\n9. **GUI Interaction and User Interface Management**: I can manage my frontend GUI, microphone status, text display, and chat integration.\nSome specific tasks I can help with include:\n* Answering general knowledge questions\n* Providing real-time information on news, weather, and more\n* Generating content such as letters, codes, and essays\n* Playing YouTube videos\n* Controlling system settings such as volume and brightness\n* Creating images\n* Extracting text from images\n* And more!\nWhat specific task would you like me to help you with?"
       }
     ]
   }
