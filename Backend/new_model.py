@@ -15,13 +15,14 @@ model = SentenceTransformer('intent_model/all-MiniLM-L6-v2')
 funcs = [
     "exit","general","realtime","open","close","play",
     "generate image","system","content","google search",
-    "youtube search","reminder","web cam","tell reminder"
+    "youtube search","web cam","tell reminder"
 ]
 
 # -------------------------------
 # INTENT EXAMPLES
 # -------------------------------
 intent_data = {
+    "general": ["who are you", "tell me something","hey","hello"],
     "open": ["open chrome", "open whatsapp", "open vs code"],
     "close": ["close chrome", "close whatsapp"],
     "play": ["play music", "play song", "start music"],
@@ -29,9 +30,7 @@ intent_data = {
     "google search": ["search for ai updates", "find best phone under 15000","search videos on chrome"],
     "youtube search": ["search youtube", "youtube video"],
     "system": ["volume up", "brightness down", "mute system","inc volume","set volume 59"],
-    "generate image": ["generate image of iron man", "create image o a black cat flying"],
-    "reminder": ["set reminder", "remind me"],
-    "general": ["who are you", "tell me something","hey","hello"]
+    "generate image": ["generate image of iron man", "create image o a black cat flying"]
 }
 
 # -------------------------------

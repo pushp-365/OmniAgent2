@@ -1,11 +1,12 @@
 import pygame
 import random
 import asyncio
-import edge_tts
+import edge_tts 
 import os
 from dotenv import dotenv_values
 from groq import AsyncGroq
 from Backend.StateManager import state_manager
+from Backend.new_chatbot import ChatBot
 
 # ────── ENV & CLIENTS ───────────────────────────────────────────────────────────
 env_vars       = dotenv_values(".env")
@@ -100,25 +101,13 @@ def TextToSpeech(text: str, func=lambda r=None: True):
     global answer
     sentences = text.split(".")
     responses = [
-        f"The rest of the result has been printed to the chat screen, kindly check it out {Username}.",
-        f"The rest of the text is now on the chat screen, {Username}, please check it.",
-        f"You can see the rest of the text on the chat screen, {Username}.",
-        f"The remaining part of the text is now on the chat screen, {Username}.",
+        f"The rest of the result has been printed to the chat screen.",
+        f"You can see the rest of the text on the chat screen",
+        f"The remaining part of the text is now on the chat screen.",
         f"{Username}, you'll find more text on the chat screen for you to see.",
-        f"The rest of the answer is now on the chat screen, {Username}.",
-        f"{Username}, please look at the chat screen, the rest of the answer is there.",
-        f"You'll find the complete answer on the chat screen, {Username}.",
-        f"The next part of the text is on the chat screen, {Username}.",
-        f"{Username}, please check the chat screen for more information.",
-        f"There's more text on the chat screen for you, {Username}.",
-        f"{Username}, take a look at the chat screen for additional text.",
-        f"You'll find more to read on the chat screen, {Username}.",
-        f"{Username}, check the chat screen for the rest of the text.",
-        f"The chat screen has the rest of the text, {Username}.",
-        f"There's more to see on the chat screen, {Username}, please look.",
         f"{Username}, the chat screen holds the continuation of the text.",
         f"You'll find the complete answer on the chat screen, kindly check it out {Username}.",
-        f"Please review the chat screen for the rest of the text, {Username}.",
+        f"Please review the chat screen for the rest of the text.",
         f"{Username}, look at the chat screen for the complete answer.",
     ]
 
